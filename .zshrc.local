@@ -1,0 +1,87 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+
+########################################
+##########PRIVATE#######################
+########################################
+
+### HISTORY
+setopt hist_ignore_dups # 重複を記録しない
+setopt EXTENDED_HISTORY # 開始と終了を記録
+setopt share_history
+setopt hist_reduce_blanks
+setopt hist_no_store # not store '$ history' to history
+
+### peco
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
+
+#xterm title
+case $TERM in
+    xterm*)
+        #precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        precmd () {print -Pn "\e]0;%~\a"}
+        ;;
+esac
+
+
+function dict() {
+    grep "$1" ~/Public/gene-utf8.txt -E -A 1
+}
+alias ema='emacs'
+alias eman='emacs -nw'
+alias sblm='~/bin/SublimeText2/sublime_text >/dev/null 2>&1'
+alias g++='g++ -std=c++11'
+alias clang++="clang++-3.5 -std=c++11 -stdlib=libc++"
+alias firefox='firefox >/dev/null 2>&1'
+alias src='source ~/.zshrc'
+alias srcedit='emacs ~/.zshrc'
+alias les="less"
+alias cd1='cd ~/Dropbox/LAB'
+alias gpl='gnuplot -persist -e '
+alias gopen='gnome-open'
+
+#command-not-found package work in zsh
+if [[ -s '/etc/zsh_command_not_found' ]]; then
+  source '/etc/zsh_command_not_found'
+fi
+
+#for golang
+export GOPATH=$HOME/work/go
+export PATH=$PATH:$GOPATH/bin
+
+# rbenv ;; install to ~/.rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# python preload
+export PYTHONSTARTUP='~/dotfiles/etc/pythonstartup.py'
+
+# gnuplot loadpath
+export GNUPLOT_LIB="~/dotfiles/etc/gnuplot_scripts"
