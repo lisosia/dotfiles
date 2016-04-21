@@ -13,5 +13,5 @@ do
     [[ "$f" == ".DS_Store" ]] && continue
 
     echo "$f"
-    ln -snfv ${HOME}/${DOT_TARGET}/${f} ${HOME}/${f}
+    ln -sfv ${HOME}/${DOT_TARGET}/${f} ${HOME}/${f}
 done
