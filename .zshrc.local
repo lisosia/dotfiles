@@ -80,7 +80,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# python preload
+# python interactive-mode preload
 export PYTHONSTARTUP='~/dotfiles/etc/pythonstartup.py'
 
 # gnuplot loadpath

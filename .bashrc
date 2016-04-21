@@ -113,26 +113,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-
 ########################################
 ##########PRIVATE#######################
 ########################################
-function dict() {
-    grep "$1" ~/Public/gene-utf8.txt -E -A 1
-}
 alias ema='emacs'
 alias eman='emacs -nw'
-alias sblm='~/bin/SublimeText2/sublime_text >/dev/null 2>&1'
-alias g++='g++ -std=c++11'
-alias clang++="clang++-3.5 -std=c++11 -stdlib=libc++"
 alias firefox='firefox >/dev/null 2>&1'
 alias src='source ~/.bashrc'
 alias srcedit='emacs ~/.bashrc'
 alias les="less"
 alias cd1='cd ~/Dropbox/LAB'
-# added by Anaconda3 2.3.0 installer
-#export PATH="/home/denjo/anaconda3/bin:$PATH"
+
+alias g++='g++ -std=c++11'
+alias clang++="clang++-3.5 -std=c++11 -stdlib=libc++"
 
 #for golang
 export GOPATH=$HOME/work/go
@@ -141,3 +134,6 @@ export PATH=$PATH:$GOPATH/bin
 # rbenv ;; install to ~/.rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Sublime
+#alias subl='~/bin/SublimeText2/sublime_text >/dev/null 2>&1'
