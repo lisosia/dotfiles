@@ -12,6 +12,13 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# ignore 1 char commmands and ls,exit,etc command
+HISTIGNORE="?:fg:bg:ls:ls *:exit:history*"
+
+# history format
+HISTTIMEFORMAT='%F %T ';
+export HISTTIMEFORMAT
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -116,6 +123,11 @@ fi
 ########################################
 ##########PRIVATE#######################
 ########################################
+
+#local bin
+mkdir -p ${HOME}/bin
+export PATH=~/bin:$PATH
+
 alias ema='emacs'
 alias eman='emacs -nw'
 alias firefox='firefox >/dev/null 2>&1'
@@ -123,6 +135,11 @@ alias src='source ~/.bashrc'
 alias srcedit='emacs ~/.bashrc'
 alias les="less"
 alias cd1='cd ~/Dropbox/LAB'
+
+function emanr() {
+    [ -f "$1" ] || (echo "file not found: $1" >&2; exit 1)
+    emacs "$1" -nw --eval '(setq buffer-read-only t)'
+}
 
 alias g++='g++ -std=c++11'
 alias clang++="clang++-3.5 -std=c++11 -stdlib=libc++"
@@ -137,3 +154,8 @@ eval "$(rbenv init -)"
 
 # Sublime
 #alias subl='~/bin/SublimeText2/sublime_text >/dev/null 2>&1'
+
+# less source highlight
+#sudo apt-get install source-highlight
+export LESS='-R'
+export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'

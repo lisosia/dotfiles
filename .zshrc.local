@@ -81,7 +81,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # python interactive-mode preload
-export PYTHONSTARTUP='~/dotfiles/etc/pythonstartup.py'
+export PYTHONSTARTUP='~/.dotfiles/etc/pythonstartup.py'
 
 # gnuplot loadpath
-export GNUPLOT_LIB="~/dotfiles/etc/gnuplot_scripts"
+export GNUPLOT_LIB="~/.dotfiles/etc/gnuplot_scripts"

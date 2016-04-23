@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Redshift
+GenericName=Display Controller
+#Icon=/home/naoki/opt/mikutter/core/skin/data/icon.png
+Exec=/usr/bin/redshift -b 0.7
+Terminal=false
