@@ -2,17 +2,26 @@
 
 autoload -Uz promptinit
 promptinit
-prompt adam1
+#prompt adam1 # prompt theta; to preview themes, $ prompt -p
+PROMPT="%F{green}%n %~%f %# "
 
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# HISTORY
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
+# HISTORY_IGNORE='(l|l[asl]|l[asl] *|cd|cd *|fg|bg)' # do not work??
+setopt EXTENDED_HISTORY # 開始と終了を記録
+setopt hist_ignore_dups # 重複を記録しない
+setopt hist_ignore_space # not restore history that begins with space 
+setopt hist_ignore_all_dups # 重複するコマンドは古い方を削除する
+setopt share_history
+setopt hist_reduce_blanks
+setopt hist_no_store # not store '$ history' to history
 
 # Use modern completion system
 autoload -Uz compinit

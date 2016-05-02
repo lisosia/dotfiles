@@ -1,4 +1,4 @@
-;;; el-get auto-install 
+;;; el-get auto-install
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -17,7 +17,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Misc
 (setq make-backup-files nil)
 (setq auto-save-default nil)
@@ -28,6 +27,8 @@
 (delete-selection-mode 1)
 (blink-cursor-mode 0)
 (setq x-select-enable-clipboard t)
+(global-linum-mode t)
+(setq-default show-trailing-whitespace t) ;行末の空白を強調
 (global-set-key "\C-x\C-b" 'buffer-menu);buffer-listを開く時に、windowを分割しない
 
 ;; Coding system.
@@ -45,3 +46,15 @@
 
 ;; package <anzu>
 (global-anzu-mode +1)
+(global-set-key (kbd "C-c r") 'anzu-query-replace)
+(global-set-key (kbd "C-c R") 'anzu-query-replace-regexp)
+
+;; package <auto-complete>
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+
+;; package flycheck
+; http://www.flycheck.org/en/latest/_downloads/flycheck.html#Ruby
+; (el-get-bundle flycheck)
+; (add-hook 'after-init-hook #'global-flycheck-mode)

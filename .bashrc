@@ -128,21 +128,11 @@ fi
 mkdir -p ${HOME}/bin
 export PATH=~/bin:$PATH
 
-alias ema='emacs'
-alias eman='emacs -nw'
-alias firefox='firefox >/dev/null 2>&1'
 alias src='source ~/.bashrc'
 alias srcedit='emacs ~/.bashrc'
-alias les="less"
-alias cd1='cd ~/Dropbox/LAB'
-
-function emanr() {
-    [ -f "$1" ] || (echo "file not found: $1" >&2; exit 1)
-    emacs "$1" -nw --eval '(setq buffer-read-only t)'
-}
 
 alias g++='g++ -std=c++11'
-alias clang++="clang++-3.5 -std=c++11 -stdlib=libc++"
+[ -f ~/.alias ] && source ~/.alias
 
 #for golang
 export GOPATH=$HOME/work/go
