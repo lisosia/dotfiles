@@ -70,3 +70,5 @@ export PYTHONSTARTUP='~/.dotfiles/etc/pythonstartup.py'
 # gnuplot loadpath
 export GNUPLOT_LIB="~/.dotfiles/etc/gnuplot_scripts"
 alias gpl='gnuplot -persist -e '
+
+[ -f ~/.zshrc.linux ] && source ~/.zshrc.linux

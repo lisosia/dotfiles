@@ -1,0 +1,20 @@
+alias e='emacs'
+alias en='emacs -nw'
+alias subl='/opt/sublime_text/sublime_text >/dev/null 2>&1'
+alias g++='g++ -std=c++11'
+alias firefox='firefox >/dev/null 2>&1'
+alias les="less"
+alias gopen='gnome-open'
+
+function enr() {
+    [ -f "$1" ] || (echo "file not found: $1" >&2; exit 1)
+    emacs "$1" -nw --eval '(setq buffer-read-only t)'
+}
+
+alias cd1='cd ~/Dropbox/LAB'
+
+alias g='git'
+alias s='git status'
+alias gc='git checkout'
+alias gb='git branch'
+alias be='bundle exec'
