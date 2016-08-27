@@ -3,7 +3,7 @@
 DOT_TARGET=".dotfiles"
 
 cd $HOME
-git clone https://github.com/lisosia/dotfiles.git ${DOT_TARGET}
+git clone https://github.com/lisosia/dotfiles.git ${DOT_TARGET} || exit 1
 echo "download done"
 
 cd ${DOT_TARGET}
