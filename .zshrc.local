@@ -32,8 +32,11 @@ function peco-history-selection() {
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+# if peco exists
+command -v peco >/dev/null && (
+    zle -N peco-history-selection
+    bindkey '^R' peco-history-selection
+)
 
 # xterm title
 case $TERM in
@@ -61,8 +64,10 @@ export GOPATH=$HOME/work/go
 export PATH=$PATH:$GOPATH/bin
 
 # rbenv ;; install to ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+command -v rbenv >/dev/null && (
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+)
 
 # python interactive-mode preload
 export PYTHONSTARTUP='~/.dotfiles/etc/pythonstartup.py'

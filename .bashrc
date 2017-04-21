@@ -13,7 +13,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # ignore 1 char commmands and ls,exit,etc command
-HISTIGNORE="?:fg:bg:ls:ls *:exit:history*"
+HISTIGNORE="?:fg:bg:ls:exit:history*:en"
 
 # history format
 HISTTIMEFORMAT='%F %T ';
@@ -139,8 +139,10 @@ export GOPATH=$HOME/work/go
 export PATH=$PATH:$GOPATH/bin
 
 # rbenv ;; install to ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+command -v rbenv >/dev/null && (
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+)
 
 # Sublime
 #alias subl='~/bin/SublimeText2/sublime_text >/dev/null 2>&1'
@@ -149,3 +151,7 @@ eval "$(rbenv init -)"
 #sudo apt-get install source-highlight
 export LESS='-R'
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+
+### IDA tool
+
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local

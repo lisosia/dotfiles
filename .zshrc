@@ -14,7 +14,7 @@ bindkey -e
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-# HISTORY_IGNORE='(l|l[asl]|l[asl] *|cd|cd *|fg|bg)' # do not work??
+HISTORY_IGNORE='(l|l[asl]|cd|cd *|fg|bg)' # do not work??
 setopt EXTENDED_HISTORY # 開始と終了を記録
 setopt hist_ignore_dups # 重複を記録しない
 setopt hist_ignore_space # not restore history that begins with space 
