@@ -5,6 +5,7 @@ DOT_TARGET=".dotfiles"
 cd $HOME
 git clone https://github.com/lisosia/dotfiles.git ${DOT_TARGET} || exit 1
 echo "download done"
+bash ${DOT_TARGET}/init.sh
 
 cd ${DOT_TARGET}
 for f in .??*
